@@ -441,3 +441,46 @@ h2{
   margin-right: 8px;
   vertical-align: middle;
 }
+
+
+/* ===== Responsive Cart Table ===== */
+@media (max-width: 768px) {
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  /* Make table scrollable on small screens */
+  .cart table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .cart-summary {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .cart-summary p,
+  .cart-summary h3 {
+    font-size: 16px;
+  }
+
+  .btn, .whatsapp-btn {
+    width: 90%;
+    max-width: 300px;
+    font-size: 15px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+}
