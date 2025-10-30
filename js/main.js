@@ -4,9 +4,7 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 // ===== Add to Cart Buttons =====
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
-
-addToCartButtons.forEach(button => {
+document.querySelectorAll(".add-to-cart").forEach(button => {
   button.addEventListener("click", () => {
     const name = button.dataset.name;
     const price = parseFloat(button.dataset.price);
@@ -47,11 +45,11 @@ function renderCart() {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${item.name}</td>
-      <td>${item.price.toLocaleString()}</td>
+      <td>₦${item.price.toLocaleString()}</td>
       <td>
         <input type="number" min="1" value="${item.quantity}" class="quantity-input" data-index="${index}">
       </td>
-      <td>${itemTotal.toLocaleString()}</td>
+      <td>₦${itemTotal.toLocaleString()}</td>
       <td><button class="remove-btn" data-index="${index}">Remove</button></td>
     `;
     cartTable.appendChild(row);
@@ -87,26 +85,9 @@ function addCartListeners() {
   });
 }
 
-// ===== Checkout =====
-const checkoutBtn = document.getElementById("checkout-btn");
-
-if (checkoutBtn) {
-  checkoutBtn.addEventListener("click", () => {
-    if (cart.length === 0) {
-      alert("Your cart is empty!");
-      return;
-    }
-    alert("Thank you for shopping with Kadarallah Trading Store!");
-    cart = [];
-    localStorage.removeItem("cart");
-    renderCart();
-  });
-}
-
-
+// ===== WISHLIST FUNCTIONALITY =====
 let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
 
-// Add to wishlist (on product page)
 document.querySelectorAll(".wishlist-btn").forEach(button => {
   button.addEventListener("click", () => {
     const name = button.getAttribute("data-name");
@@ -124,12 +105,9 @@ document.querySelectorAll(".wishlist-btn").forEach(button => {
   });
 });
 
-// Display wishlist (on wishlist.html)
 document.addEventListener("DOMContentLoaded", () => {
   const wishlistBody = document.getElementById("wishlist-body");
-  if (!wishlistBody) return; // stop if not on wishlist page
-
-  console.log("Wishlist data found:", wishlist); // just for debugging
+  if (!wishlistBody) return;
 
   wishlistBody.innerHTML = "";
 
@@ -142,13 +120,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${item.name}</td>
-      <td>${item.price.toLocaleString()}</td>
+      <td>₦${item.price.toLocaleString()}</td>
       <td><button class="remove-wish" data-index="${index}">Remove</button></td>
     `;
     wishlistBody.appendChild(row);
   });
 
-  // Remove item
   document.querySelectorAll(".remove-wish").forEach(button => {
     button.addEventListener("click", () => {
       const index = button.getAttribute("data-index");
@@ -159,4 +136,45 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// ===== WHATSAPP CHECKOUT =====
+document.addEventListener("DOMContentLoaded", () => {
+  const whatsappCheckoutBtn = document.getElementById("whatsapp-checkout-btn");
+  if (!whatsappCheckoutBtn) return;
 
+  whatsappCheckoutBtn.addEventListener("click", () => {
+    const name = document.getElementById("cust-name")?.value.trim();
+    const address = document.getElementById("cust-address")?.value.trim();
+    const method = document.getElementById("cust-method")?.value;
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (!name || !address || cart.length === 0) {
+      alert("Please fill in all details and add items to your cart before checkout.");
+      return;
+    }
+
+    let message = `🧱 *Kadarallah Trading Store Order*\n\n`;
+    message += `*Name:* ${name}\n`;
+    message += `*Address:* ${address}\n`;
+    message += `*Delivery:* ${method}\n\n`;
+    message += `🛒 *Order Summary:*\n`;
+
+    let total = 0;
+    cart.forEach(item => {
+      message += `- ${item.name} (₦${item.price.toLocaleString()} × ${item.quantity})\n`;
+      total += item.price * item.quantity;
+    });
+
+    message += `\n*Total:* ₦${total.toLocaleString()}\n\nThank you for shopping with us!`;
+
+ // your dad’s WhatsApp number
+
+    const phone = "2348035348758";
+    const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+
+    // ✅ Auto clear cart after sending
+    localStorage.removeItem("cart");
+    cart.length = 0;
+    renderCart();
+  });
+});
