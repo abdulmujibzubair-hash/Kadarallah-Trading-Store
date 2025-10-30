@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kadarallah Trading Store | Cart</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ===== Header / Navbar ===== -->
+  <header>
+    <div class="container nav">
+      <h1 class="logo">Kadarallah <span>Trading Store</span></h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="cart.html" class="active">Cart</a></li>
+          <li><a href="wishlist.html">❤️ Wishlist</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== Cart Section ===== -->
+  <section class="cart">
+    <div class="container">
+      <h2>Your Cart</h2>
+      <table id="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price (₦)</th>
+            <th>Quantity</th>
+            <th>Total (₦)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items">
+          <!-- Items will be added dynamically here -->
+        </tbody>
+      </table>
+
+      <div class="cart-summary">
+        <h3>Cart Summary</h3>
+        <p><strong>Subtotal:</strong> ₦<span id="cart-total">0</span></p>
+        <button id="checkout-btn" class="btn">Proceed to Checkout</button>
+      </div>
+    </div>
+    <div class="checkout-section">
+  <button id="checkout-btn" class="whatsapp-btn">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="whatsapp-icon">
+    Checkout with WhatsApp
+  </button>
+</div>
+    <!-- WhatsApp Floating Chat Button -->
+<a href="https://wa.me/2348035348758?text=Hello%20Kadarallah%20Trading%20Store!%20I%20need%20help%20with%20a%20product." 
+   class="whatsapp-float" target="_blank">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp" class="whatsapp-float-icon">
+</a>
+
+
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Kadarallah Trading Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
