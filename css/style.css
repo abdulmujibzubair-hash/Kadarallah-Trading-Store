@@ -560,5 +560,27 @@ h2{
 }
 
 
+.search-bar {
+  text-align: center;
+  margin: 20px auto;
+}
+
+#product-search {
+  width: 80%;
+  max-width: 400px;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #333;
+  border-radius: 5px;
+}
+
+
+.highlight {
+  background-color: red;
+  color: #000;
+  font-weight: bold;
+}
+
+
 
 
