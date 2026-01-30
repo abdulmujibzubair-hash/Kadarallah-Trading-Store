@@ -46,19 +46,19 @@
       <div class="cart-summary">
         <h3>Cart Summary</h3>
         <p><strong>Subtotal:</strong> ₦<span id="cart-total">0</span></p>
-        <button id="checkout-btn" class="btn">Proceed to Checkout</button>
+        
       </div>
     </div>
 
       <div class="checkout-section">
               <input id="cust-name" placeholder="Your Name" required>
               <input id="cust-address" placeholder="Your Address" required>
-              <select id="cust-method">
-                <option>Home Delivery</option>
-                <option>Pickup</option>
+              <select id="cust-method" placeholder="Your delivery preference" required>
+                <option value="">Your Delivery Preference</option>
+                <option value="">Home Delivery</option>
+                <option value="">Pickup</option>
               </select>
       </div>
-
 
     <div class="checkout-section">
   <button id="whatsapp-checkout-btn" class="whatsapp-btn">
@@ -73,16 +73,6 @@
 </a>
 
 
-</section>
-
-
-<section id="reviews">
-  <h2>Customer Reviews</h2>
-  <form id="review-form">
-    <input type="text" id="review-name" placeholder="Your name" required>
-    <textarea id="review-text" placeholder="Write your review..." required></textarea>
-    <button type="submit">Send</button>
-  </form>
 </section>
 
 

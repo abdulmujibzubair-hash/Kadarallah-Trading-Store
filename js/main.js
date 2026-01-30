@@ -180,20 +180,3 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.getElementById("review-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById("review-name").value.trim();
-  const review = document.getElementById("review-text").value.trim();
-
-  if (!name || !review) {
-    alert("Please fill in both your name and review before sending.");
-    return;
-  }
-
-  const message = `⭐ *New Customer Review* ⭐\n\n👤 *Name:* ${name}\n💬 *Review:* ${review}`;
-  const phone = "2348035348758"; // Your dad's WhatsApp number
-  const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
-
-  window.open(url, "_blank");
-});
